@@ -4,3 +4,28 @@ y.output
 y.tab.h
 lex.yy.c
 a.out
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Generated files
+*.exe
+*.c
+*.txt
+!input1.c
+!requirements.txt
+!features.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store

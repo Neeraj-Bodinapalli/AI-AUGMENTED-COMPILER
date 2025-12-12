@@ -1,34 +1,166 @@
-# WinFlexBison - Flex and Bison for Microsoft Windows
+# 🚀 AI-Augmented Compiler
 
-WinFlexBison is a Windows port of [Flex (the fast lexical analyser)](https://github.com/westes/flex/) and [GNU Bison (parser generator)](https://www.gnu.org/software/bison/).
-Both win_flex and win_bison are based on upstream sources but depend on system libraries only.
+An intelligent compiler optimization system that leverages Machine Learning to automatically predict and apply the best code optimization techniques for C programs.
 
-**NOTE**:
-* 2.4.x versions include GNU Bison version 2.7
-* 2.5.x versions include GNU Bison version 3.x.x
+## 📋 Project Description / Overview
 
-## License
-Flex uses a [BSD license](flex/src/COPYING), GNU Bison is [licensed under the GNU General Public License (GPLv3+)](bison/src/COPYING).  
-All build scripts in WinFlexBison are distributed under GPLv3+. See [COPYING](COPYING) for details.
+This project implements an AI-powered compiler that combines traditional compiler design principles with modern machine learning techniques. The system analyzes C source code, generates intermediate representation (IR), extracts comprehensive features, and uses a trained Random Forest model to intelligently select and apply the most effective optimization technique.
 
-All documentation, especially those under custom_build_rules/doc, is distributed under the GNU Free Documentation License (FDL 1.3+).
+## ✨ Key Features
 
-## Build status
-Bison 3.x (master) [![Build status](https://ci.appveyor.com/api/projects/status/58lcjnr0mb9uc8c8/branch/master?svg=true)](https://ci.appveyor.com/project/lexxmark/winflexbison/branch/master) and, for compatibility reasons, Bison 2.7 (bison2.7) [![Build status](https://ci.appveyor.com/api/projects/status/58lcjnr0mb9uc8c8/branch/bison2.7?svg=true)](https://ci.appveyor.com/project/lexxmark/winflexbison/branch/bison2.7)
+- 🤖 **ML-Driven Optimization Selection** - Intelligent prediction of optimal optimization techniques
+- 🔄 **Automatic Optimization Application** - Seamless integration of ML predictions with optimization engine
+- 🎨 **Interactive GUI** - Visual comparison of original vs optimized code with detailed statistics
+- 📊 **Performance Analysis** - Runtime comparison and cost estimation for optimized code
+- 🧩 **Multiple Optimization Techniques** - Support for 5 major optimization strategies
+- 🔍 **Advanced Feature Extraction** - 15+ features extracted from IR code for ML analysis
 
-## Downloads
-https://github.com/lexxmark/winflexbison/releases provides stable versions.
-To test non-released development versions see the artifacts provided by CI under "Build status".
+## 🛠️ Technologies Used
 
-## Changelog
-The release page includes the full Changelog but you may also see the [changelog.md](changelog.md) file.
+### Programming Languages
+- **Python 3.6+** - Core ML and optimization logic
+- **C** - Compiler implementation
+- **Flex/Bison** - Lexical analysis and parsing
 
-## Build requirements
-* Visual Studio 2017 or newer
-* optional: CMake (when building with CMake)
+### Machine Learning & Data Science
+- **scikit-learn** - Random Forest classifier for optimization prediction
+- **pandas** - Data processing and feature management
+- **numpy** - Numerical computations
+- **joblib** - Model serialization and loading
 
-## HowTo
-You may use win_flex and win_bison directly on the command line or [use them via CustomBuildRules in VisualStudio](custom_build_rules/README.md).
+### GUI Framework
+- **tkinter** - Graphical user interface
 
-## Example flex/bison files
-See https://github.com/meyerd/flex-bison-example
+## 📁 Project Structure
+
+```
+c-compiler/
+│
+├── compiler.exe                    # Compiled C compiler executable
+├── compiler_model.joblib          # Trained ML model (Random Forest)
+├── requirements.txt               # Python dependencies
+│
+├── Core Application Files
+│   ├── optimization_gui.py        # Main GUI application
+│   ├── optimization_predictor.py  # ML prediction system
+│   ├── optimizer.py              # Optimization engine (5 techniques)
+│   ├── ir_feature_extractor.py   # Feature extraction from IR
+│   ├── ir_to_c.py                # IR to C code translator
+│   ├── build_executables.py      # Build executables for testing
+│   └── compare_runtime.py        # Runtime performance comparison
+│
+├── Compiler Source
+│   ├── lexer.l                   # Flex lexer source (tokenization)
+│   └── parser.y                  # Bison parser source (grammar and IR)
+│
+├── Machine Learning
+│   ├── train_model.py            # Model training script
+│   └── features.csv              # Training dataset
+│
+└── Test Files
+    ├── input1.c                  # Example test file
+    └── C-codes/                  # Test suite (50+ test cases)
+```
+
+## 🔧 Installation Instructions
+
+### Prerequisites
+- Python 3.6 or higher
+- pip (Python package manager)
+
+### Step 1: Clone the Repository
+```bash
+git clone <repository-url>
+cd c-compiler
+```
+
+### Step 2: Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+## 🚀 Usage Guide
+
+### Launch GUI
+```bash
+python optimization_gui.py
+```
+
+### Steps to Use:
+1. Click **"Browse"** button
+2. Select a C source file (e.g., `input1.c` or any file from `C-codes/`)
+3. Click **"Analyze"**
+4. View results:
+   - **Original vs Optimized IR** - Side-by-side code comparison
+   - **Statistics Panel** - Instruction count, cost analysis, improvement metrics
+   - **Runtime Panel** - Performance comparison (if C compiler available)
+   - **Info Panel** - Description of applied optimization
+
+## 🏗️ Architecture / How It Works
+
+### System Pipeline
+
+```
+┌─────────────┐
+│  C Source   │
+│    Code     │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────┐
+│  Lexer (lexer.l)│  Tokenization
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Parser (parser.y)│  Parsing & IR Generation
+└────────┬────────┘
+         │
+         ▼
+┌──────────────────────┐
+│ Intermediate Code    │  Three-address code
+│    (IR)              │
+└────────┬─────────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│ Feature Extraction       │  Extract 15 features:
+│ (ir_feature_extractor.py)│  - Instruction count
+└────────┬─────────────────┘  - Complexity metrics
+         │                     - Loop analysis
+         ▼                     - Expression patterns
+┌──────────────────────────┐
+│ ML Model Prediction      │  Random Forest predicts
+│ (compiler_model.joblib)  │  optimal optimization
+└────────┬─────────────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│ Optimization Engine      │  Apply predicted
+│ (optimizer.py)           │  optimization
+└────────┬─────────────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│ Optimized IR             │
+└────────┬─────────────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│ GUI Visualization        │  Side-by-side comparison
+│ (optimization_gui.py)    │  Statistics & Performance
+└──────────────────────────┘
+```
+
+### Supported Optimizations
+
+The system implements 5 major optimization techniques:
+
+1. **Constant Folding** - Evaluates constant expressions at compile-time and propagates constant values
+2. **Dead Code Elimination** - Removes unreachable code and unused variables using liveness analysis
+3. **Common Subexpression Elimination** - Eliminates redundant calculations within basic blocks
+4. **Strength Reduction** - Replaces expensive operations (multiplication/division) with cheaper ones (addition/subtraction) in loops
+5. **Loop-Invariant Code Motion** - Moves loop-invariant calculations outside loops to reduce computation overhead
+
+
+
