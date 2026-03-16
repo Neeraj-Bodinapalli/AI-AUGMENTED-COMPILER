@@ -1,21 +1,21 @@
-# 🚀 AI-Augmented Compiler
+#  AI-Augmented Compiler
 
 An intelligent compiler optimization system that leverages Machine Learning to automatically predict and apply the best code optimization techniques for C programs.
 
-## 📋 Project Description / Overview
+##  Project Description / Overview
 
 This project implements an AI-powered compiler that combines traditional compiler design principles with modern machine learning techniques. The system analyzes C source code, generates intermediate representation (IR), extracts comprehensive features, and uses a trained Random Forest model to intelligently select and apply the most effective optimization technique.
 
-## ✨ Key Features
+##  Key Features
 
-- 🤖 **ML-Driven Optimization Selection** - Intelligent prediction of optimal optimization techniques
-- 🔄 **Automatic Optimization Application** - Seamless integration of ML predictions with optimization engine
-- 🎨 **Interactive GUI** - Visual comparison of original vs optimized code with detailed statistics
-- 📊 **Performance Analysis** - Runtime comparison and cost estimation for optimized code
-- 🧩 **Multiple Optimization Techniques** - Support for 5 major optimization strategies
-- 🔍 **Advanced Feature Extraction** - 15+ features extracted from IR code for ML analysis
+-  **ML-Driven Optimization Selection** - Intelligent prediction of optimal optimization techniques
+-  **Automatic Optimization Application** - Seamless integration of ML predictions with optimization engine
+-  **Interactive GUI** - Visual comparison of original vs optimized code with detailed statistics
+-  **Performance Analysis** - Runtime comparison and cost estimation for optimized code
+-  **Multiple Optimization Techniques** - Support for 5 major optimization strategies
+-  **Advanced Feature Extraction** - 15+ features extracted from IR code for ML analysis
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 ### Programming Languages
 - **Python 3.6+** - Core ML and optimization logic
@@ -31,7 +31,7 @@ This project implements an AI-powered compiler that combines traditional compile
 ### GUI Framework
 - **tkinter** - Graphical user interface
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 c-compiler/
@@ -79,7 +79,7 @@ cd c-compiler
 pip install -r requirements.txt
 ```
 
-## 🚀 Usage Guide
+##  Usage Guide
 
 ### Launch GUI
 ```bash
@@ -96,7 +96,7 @@ python optimization_gui.py
    - **Runtime Panel** - Performance comparison (if C compiler available)
    - **Info Panel** - Description of applied optimization
 
-## 🏗️ Architecture / How It Works
+##  Architecture / How It Works
 
 ### System Pipeline
 
